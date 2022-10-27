@@ -2,19 +2,21 @@ from tkinter import *
 from tkinter import ttk
 import math
 
+from numpy import mat
+
 #Method to evaluate formula 1
 def Calculate_Formula1():
     try: 
         n=textBox_n.get(1.0, "end-1c")
         r=textBox_r.get(1.0, "end-1c")
-        w=textBox_w.get(1.0, "end-1c")
+        l=textBox_w.get(1.0, "end-1c")
         thitha=textBox_thitha.get(1.0, "end-1c")
         #Formula for calculation
-        cal_value=(int(w)*int(r)
+        cal_value=(math.pi/30)*(float(n)*float(r)
                         *(
-                            round(math.sin(math.radians(int(thitha))),2)
+                            round(math.sin(math.radians(float(thitha))),2)
                             + (
-                                (round(math.sin(math.radians(int(thitha)*2)),2))/(2*int(n))
+                                (float(r)*(round(math.sin(math.radians(float(thitha)*2)),2)))/(2*float(l))
                                )
                         )
                    )
@@ -30,17 +32,17 @@ def Calculate_Formula2():
     try: 
         n=textBox_n.get(1.0, "end-1c")
         r=textBox_r.get(1.0, "end-1c")
-        w=textBox_w.get(1.0, "end-1c")
+        l=textBox_w.get(1.0, "end-1c")
         thitha=textBox_thitha.get(1.0, "end-1c")
         #Formula for calculation
-        cal_value=(int(w)*int(w)*int(r)
+        cal_value=(math.pi*math.pi*float(n)*float(n)*float(r)
                         *(
-                            round(math.cos(math.radians(int(thitha))),2)
+                            round(math.cos(math.radians(float(thitha))),2)
                             + (
-                                (round(math.cos(math.radians(int(thitha)*2)),2))/int(n)
+                                ((float(r)*round(math.cos(math.radians(float(thitha)*2)),2)))/float(l)
                                )
                         )
-                   )
+                   )/900
         succssText = Label(text=f"Formula 2 Calculation value: {cal_value}",foreground='green')
         succssText.place(x=15,y=360)
     except Exception as error:
@@ -58,7 +60,7 @@ heading.pack()
 #Creating all the labels
 variable_n = Label(text="Enter value of n :",font="10")
 variable_r = Label(text="Enter value of r :",font="10")
-variable_w = Label(text="Enter value of w :",font="10")
+variable_w = Label(text="Enter value of l :",font="10")
 variable_thitha = Label(text="Enter value of θ :",font="10")
 variable_n.place(x=15,y=80)
 variable_r.place(x=15,y=115)
